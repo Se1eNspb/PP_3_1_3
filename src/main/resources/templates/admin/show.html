@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+<a>Id, Name:</a><p th:text="${user.getId()}+', '+${user.getUsername()}">VALUE</p>
+<a>Email: </a><p th:text="${user.getEmail()}">VALUE</p>
+<a>Password: </a><p th:text="${user.getPassword()}">VALUE</p>
+<a>List of Role:</a><div th:each="u:${user.getRoles()}">
+    <a th:text="${u.getName()}">user</a>
+</div>
+
+<br/>
+
+<a th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
+
+<br/>
+<br/>
+
+<form th:method="DELETE" th:acton="@{/admin/{id}(id=${user.getId()})}">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="submit" value="Delete user.">
+</form>
+
+<br/>
+
+<a href="/admin">To all users.</a>
+
+</body>
+</html>

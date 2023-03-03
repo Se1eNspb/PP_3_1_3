@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+    <label for="name">Edit name</label>
+    <input id="name" type="text" th:field="*{username}"/>
+    <br/>
+    <label for="email">Edit email</label>
+    <input id="email" type="text" th:field="*{email}"/>
+    <br/>
+    <label for="password">Edit password</label>
+    <input id="password" type="text" th:field="*{password}"/>
+    <br/>
+    <div >
+        <th:block th:each="role: ${listOfRoles}">
+            <input type="checkbox" th:field="*{roles}"
+                   th:text="${role.getName()}" th:value="${role.getId()}" class="m-2" />
+        </th:block>
+    </div>
+    <input type="submit" value="Update user.">
+</form>
+<br/>
+<a href="/admin">To all users.</a>
+</body>
+</html>

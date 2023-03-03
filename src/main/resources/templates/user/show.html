@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+<p th:text="${user.getId()}+', '+${user.getUsername()}">VALUE</p>
+<p th:text="${user.getEmail()}">VALUE</p>
+<p th:text="${user.getPassword()}">VALUE</p>
+
+<br/>
+<br/>
+
+<form th:method="POST" th:action="@{/logout}" >
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+</html>

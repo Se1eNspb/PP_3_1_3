@@ -6,10 +6,14 @@
 </head>
 <body>
 
-<a>Id, Name:</a><p th:text="${user.getId()}+', '+${user.getUsername()}">VALUE</p>
-<a>Email: </a><p th:text="${user.getEmail()}">VALUE</p>
-<a>Password: </a><p th:text="${user.getPassword()}">VALUE</p>
-<a>List of Role:</a><div th:each="u:${user.getRoles()}">
+<a>Id, Name:</a>
+<p th:text="${user.getId()}+', '+${user.getUsername()}">VALUE</p>
+<a>Email: </a>
+<p th:text="${user.getEmail()}">VALUE</p>
+<a>Password: </a>
+<p th:text="${user.getPassword()}">VALUE</p>
+<a>List of Role:</a>
+<div th:each="u:${user.getRoles()}">
     <a th:text="${u.getName()}">user</a>
 </div>
 

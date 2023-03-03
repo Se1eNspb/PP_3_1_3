@@ -15,9 +15,9 @@ public class User {
     private String password;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY)
-    @JoinTable(name="user_role"
-            ,joinColumns = @JoinColumn(name = "user_id")
-            ,inverseJoinColumns = @JoinColumn(name="role_id"))
+    @JoinTable(name = "user_role"
+            , joinColumns = @JoinColumn(name = "user_id")
+            , inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
     public User() {
@@ -29,8 +29,8 @@ public class User {
         this.email = email;
     }
 
-    public void addRoleToUser(Role role){
-        if(roles == null){
+    public void addRoleToUser(Role role) {
+        if (roles == null) {
             roles = new ArrayList<>();
         }
         roles.add(role);
@@ -51,6 +51,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getEmail() {
         return email;
     }

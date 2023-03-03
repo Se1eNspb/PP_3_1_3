@@ -21,8 +21,9 @@ public class Role {
     public Role(String name) {
         this.name = name;
     }
-    public void addUserToRole(User user){
-        if(users == null){
+
+    public void addUserToRole(User user) {
+        if (users == null) {
             users = new ArrayList<>();
         }
         users.add(user);

@@ -37,7 +37,7 @@ public class AdminController {
     public String newUser(Model model) {
         model.addAttribute("user", new User());
         List<Role> listOfRoles = userService.listAllRoles();
-        model.addAttribute("listOfRoles",listOfRoles);
+        model.addAttribute("listOfRoles", listOfRoles);
         return "admin/new";
     }
 
@@ -51,7 +51,7 @@ public class AdminController {
     public String edit(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.read(id));
         List<Role> listOfRoles = userService.listAllRoles();
-        model.addAttribute("listOfRoles",listOfRoles);
+        model.addAttribute("listOfRoles", listOfRoles);
         return "admin/edit";
     }
 

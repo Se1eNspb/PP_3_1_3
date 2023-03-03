@@ -22,21 +22,24 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-@Autowired
+
+    @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
-    this.roleRepository = roleRepository;
-}
+        this.roleRepository = roleRepository;
+    }
+
     @Override
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException("User not found!");
         }
         Hibernate.initialize(user.get().getRoles());
         return new UserDetailsImp(user.get(), user.get().getRoles());
     }
+
     @Transactional(readOnly = true)
     public List<User> index() {
         return userRepository.findAll();
@@ -47,6 +50,7 @@ public class UserService implements UserDetailsService {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
+
     public void create(User user) {
         userRepository.save(user);
     }
@@ -55,11 +59,13 @@ public class UserService implements UserDetailsService {
         user.setId(id);
         userRepository.save(user);
     }
+
     public void delete(int id) {
         userRepository.deleteById(id);
     }
+
     @Transactional(readOnly = true)
-    public List<Role> listAllRoles(){
-    return roleRepository.findAll();
+    public List<Role> listAllRoles() {
+        return roleRepository.findAll();
     }
 }
